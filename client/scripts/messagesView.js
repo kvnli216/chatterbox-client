@@ -2,6 +2,12 @@ var MessagesView = {
 
   $chats: $('#chats'),
 
+
+
+  //   $('#stop').click(function() {
+  //     $('next').attr('onclick','stopMoving()');
+  // }
+
   initialize: function () {
 
   },
@@ -10,8 +16,9 @@ var MessagesView = {
   // }
 
   renderMessage: function (element) {
-    var messageNode = MessageView.render({ username: element.username, text: element.message });
+    var messageNode = MessageView.render({ username: element.username, text: element.text });
     MessagesView.$chats.append(messageNode);
+    // debugger;
   }
 
 };

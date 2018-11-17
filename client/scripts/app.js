@@ -35,13 +35,18 @@ var App = {
           let tempRoomName = element.roomname;
 
           if (!roomArr.includes(tempRoomName)) {
-            RoomsView.renderView(element);
+            roomArr.push(tempRoomName);
+            RoomsView.renderRoom(element);
           }
-
-
-
         }
       });
+
+      // $('.username').attr('friend', true ? true : false);
+      $('.username').on('click', function (event) {
+        debugger;
+      });
+      //   // $('.username');
+
 
       //   sort it by moving "alike" type data to appropriate containers
       // within those containers, they utilize ajax to dynamically update
