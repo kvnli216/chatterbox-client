@@ -41,19 +41,6 @@ var App = {
           }
         }
       });
-
-      $('#chats').on('click', '.username', function (event) {
-        // debugger;
-        let name = $(this).text();
-        if (!friends.hasOwnProperty(name)) {
-          friends[name];
-        }
-        //Get all elements that have the same text as the element we clicked on
-        // let $futureFriends = $('.username').text(name);
-        Friends.toggleStatus(name);
-      }
-
-      );
       //   // $('.username');
 
 
