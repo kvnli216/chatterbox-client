@@ -46,7 +46,7 @@ var App = {
 
       //   sort it by moving "alike" type data to appropriate containers
       // within those containers, they utilize ajax to dynamically update
-
+      console.log(data);
       callback();
     });
   },

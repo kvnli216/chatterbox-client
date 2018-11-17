@@ -5,7 +5,6 @@ var RoomsView = {
 
 
   initialize: function () {
-    debugger;
     $('#rooms button').on('click', function (event) {
       Rooms.add();
     });

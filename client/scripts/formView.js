@@ -11,9 +11,20 @@ var FormView = {
     event.preventDefault();
 
     // STILL NEEDS a means of tracking other message properties (username..etc)
-    var userMessage = $('#message').serializeArray();
-    Parse.create(userMessage[0].value, console.log('poo'));
-    // updates in our messageArr
+    // var userMessage = $('#message').serializeArray()[0].value;
+    // var currentUser = App.username;
+    // var currentRoom = $('#rooms option:selected').text();
+    // debugger;
+
+
+    var message = {
+      username: App.username,
+      text: $('#message').serializeArray()[0].value,
+      roomname: $('#rooms option:selected').text()
+    };
+    // debugger;
+    Parse.create(message);
+    // Need to update
 
     // 2. whatever is in the textbox => DOM
   },
