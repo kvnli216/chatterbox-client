@@ -27,17 +27,18 @@ var App = {
       data.results.forEach(element => {
         if (element.hasOwnProperty('text') && element.hasOwnProperty('username') && element.hasOwnProperty('roomname')) {
           messageArr.push(element);
+          console.log(element);
           // debugger;
-          let tempMessage = _.template('<%= message %>');
-          let tempRoomName = element.roomname;
-          if (!roomArr.includes(tempRoomName)) {
-            roomArr.push(tempRoomName);
+          // let tempMessage = _.template('<%= message %>');
 
-            let tempRoom = _.template('<option value="<%= tempRoomName %>"><%= tempRoomName %></option>');
-            RoomsView.$select.append(tempRoom({ tempRoomName: tempRoomName }));
+          MessagesView.renderMessage(element);
+          let tempRoomName = element.roomname;
+
+          if (!roomArr.includes(tempRoomName)) {
+            RoomsView.renderView(element);
           }
 
-          MessagesView.$chats.append(tempMessage({ message: element.text }));
+
 
         }
       });
