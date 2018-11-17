@@ -1,10 +1,14 @@
 var RoomsView = {
-
   $button: $('#rooms button'),
   $select: $('#rooms select'),
+  // onclick="Rooms.add();"
+
 
   initialize: function () {
-
+    debugger;
+    $('#rooms button').on('click', function (event) {
+      Rooms.add();
+    });
   },
 
   render: function () {

@@ -20,14 +20,15 @@ var App = {
   fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      // console.log(data);
       // iterate through the data
       let messageArr = [];
       let roomArr = [];
+      let friends = {};
       data.results.forEach(element => {
         if (element.hasOwnProperty('text') && element.hasOwnProperty('username') && element.hasOwnProperty('roomname')) {
           messageArr.push(element);
-          console.log(element);
+          // console.log(element);
           // debugger;
           // let tempMessage = _.template('<%= message %>');
 
@@ -41,10 +42,18 @@ var App = {
         }
       });
 
-      // $('.username').attr('friend', true ? true : false);
-      $('.username').on('click', function (event) {
-        debugger;
-      });
+      $('#chats').on('click', '.username', function (event) {
+        // debugger;
+        let name = $(this).text();
+        if (!friends.hasOwnProperty(name)) {
+          friends[name];
+        }
+        //Get all elements that have the same text as the element we clicked on
+        // let $futureFriends = $('.username').text(name);
+        Friends.toggleStatus(name);
+      }
+
+      );
       //   // $('.username');
 
 
