@@ -4,7 +4,7 @@ var App = {
 
   username: 'anonymous',
 
-  initialize: function() {
+  initialize: function () {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -17,22 +17,46 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
+      // iterate through the data
+      let messageArr = [];
+      let roomArr = [];
+      data.results.forEach(element => {
+        if (element.hasOwnProperty('text') && element.hasOwnProperty('username') && element.hasOwnProperty('roomname')) {
+          messageArr.push(element);
+          // debugger;
+          let tempMessage = _.template('<%= message %>');
+          let tempRoomName = element.roomname;
+          if (!roomArr.includes(tempRoomName)) {
+            roomArr.push(tempRoomName);
+
+            let tempRoom = _.template('<option value="<%= tempRoomName %>"><%= tempRoomName %></option>');
+            RoomsView.$select.append(tempRoom({ tempRoomName: tempRoomName }));
+          }
+
+          MessagesView.$chats.append(tempMessage({ message: element.text }));
+
+        }
+      });
+
+      //   sort it by moving "alike" type data to appropriate containers
+      // within those containers, they utilize ajax to dynamically update
 
       callback();
     });
   },
 
-  startSpinner: function() {
+  startSpinner: function () {
     App.$spinner.show();
     FormView.setStatus(true);
   },
 
-  stopSpinner: function() {
+  stopSpinner: function () {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }
+
 };
