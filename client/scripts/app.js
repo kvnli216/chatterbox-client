@@ -19,19 +19,13 @@ var App = {
 
   fetch: function (callback = () => { }) {
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      // console.log(data);
-      // iterate through the data
       let messageArr = [];
       let roomArr = [];
       let friends = {};
+
       data.results.forEach(element => {
         if (element.hasOwnProperty('text') && element.hasOwnProperty('username') && element.hasOwnProperty('roomname')) {
           messageArr.push(element);
-          // console.log(element);
-          // debugger;
-          // let tempMessage = _.template('<%= message %>');
-
           MessagesView.renderMessage(element);
           let tempRoomName = element.roomname;
 
@@ -41,12 +35,6 @@ var App = {
           }
         }
       });
-      //   // $('.username');
-
-
-      //   sort it by moving "alike" type data to appropriate containers
-      // within those containers, they utilize ajax to dynamically update
-      console.log(data);
       callback();
     });
   },

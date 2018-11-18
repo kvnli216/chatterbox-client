@@ -27,16 +27,16 @@ var Parse = {
       type: 'GET',
       data: { order: '-createdAt' },
       // data: { order: '-createdAt' },
-      dataFilter: function (data) {
-        data = JSON.parse(data);
-        // debugger;
-        dataArr = data.results.filter(element => {
-          return element.roomname === 'hrsf108';
-        });
-        data.results = dataArr;
-        //debugger;
-        return JSON.stringify(data);
-      },
+      // dataFilter: function (data) {
+      //   data = JSON.parse(data);
+      //   // debugger;
+      //   dataArr = data.results.filter(element => {
+      //     return element.roomname === 'hrsf108';
+      //   });
+      //   data.results = dataArr;
+      //   //debugger;
+      //   return JSON.stringify(data);
+      // },
       contentType: 'application/json',
       success: successCB,
       error: errorCB || function (error) {
